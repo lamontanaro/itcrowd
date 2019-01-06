@@ -2,19 +2,23 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['PG_USERNAME'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
 
 development:
   <<: *default
   host: localhost
   database: itcrowd_development
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 test:
   <<: *default
   host: localhost
   database: itcrowd_test
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 production:
   <<: *default
   database: itcrowd_production
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

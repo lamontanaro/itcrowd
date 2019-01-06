@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_01_06_113323) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.integer "release_year"
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 2019_01_06_113323) do
   end
 
   create_table "people_movies", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "movie_id"
+    t.bigint "person_id"
+    t.bigint "movie_id"
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,4 +66,6 @@ ActiveRecord::Schema.define(version: 2019_01_06_113323) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "people_movies", "movies"
+  add_foreign_key "people_movies", "people"
 end
