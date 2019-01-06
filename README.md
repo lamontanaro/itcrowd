@@ -30,7 +30,7 @@ Configuration
 Usage
 ----------------------------------------------
 
-Example with cURL:
+Example:
 
 1. `bundle exec rails server`
 
