@@ -1,24 +1,109 @@
-# README
+ITCROWD API
+==============================================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Environment
+----------------------------------------------
 
-Things you may want to cover:
+- Ruby version: `2.4.2`
+- Rails version: `5.2.2`
+- Ruby version manager: `rvm`
+- Local URL: http://localhost:3000
+- Heroku app URL: https://itcrowdapi.herokuapp.com
 
-* Ruby version
+API Docs
+----------------------------------------------
+- https://itcrowdapi.herokuapp.com/apipie
+- http://localhost:3000/apipie
 
-* System dependencies
+json format:
+- https://itcrowdapi.herokuapp.com/apipie.json
+- http://localhost:3000/apipie.json
 
-* Configuration
+Configuration
+----------------------------------------------
 
-* Database creation
+- `bundle install`
+- `rails db:create`
+- `rails db:migrate`
+- `rails db:seed`
 
-* Database initialization
+Usage
+----------------------------------------------
 
-* How to run the test suite
+Example with cURL:
 
-* Services (job queues, cache servers, search engines, etc.)
+1. `bundle exec rails server`
 
-* Deployment instructions
+2. Get session tokens by postman
+```
+https://itcrowdapi.herokuapp.com/api/v1/auth/sign_in
+or
+http://localhost:3000/api/v1/auth/sign_in
+json body :
+{
+  "email": "user@example.com",
+  "password": "asdqwe123"
+}
+```
 
-* ...
+3. Copy Access-Token, Client and Uid
+
+4. Create People with tokens
+```
+https://itcrowdapi.herokuapp.com/api/v1/movies
+or
+http://localhost:3000/api/v1/movies
+
+header: {
+  access_token: access_token
+  client: client
+  uid: uid  
+}
+
+body : {
+  "title" : "the title",
+  "release_year": 0000
+}
+
+```
+
+5. Create People with tokens
+```
+https://itcrowdapi.herokuapp.com/api/v1/people
+or
+http://localhost:3000/api/v1/people
+
+header: {
+  access_token: access_token
+  client: client
+  uid: uid  
+}
+
+body : {
+  "last_name" : "last_name",
+  "first_name": "first_name",
+  "aliases":"aliases"
+}
+
+```
+6 Assign Person to the movie with tokens
+```
+https://itcrowdapi.herokuapp.com/api/v1/people/1/people_movies
+or
+http://localhost:3000/api/v1/people/1/people_movies
+
+header: {
+  access_token: access_token
+  client: client
+  uid: uid  
+}
+
+body : {
+  "movie_id": 1,
+  "role": "producer"
+}
+
+role types: [ :actor_actress, :director, :producer ]
+
+```
+Lamontanaro Francisco Javier, lamontanarofrancisco@gmail.com
