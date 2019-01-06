@@ -48,7 +48,7 @@ json body :
 
 3. Copy Access-Token, Client and Uid
 
-4. Create People with tokens
+4. Create Movie with tokens
 ```
 https://itcrowdapi.herokuapp.com/api/v1/movies
 or
