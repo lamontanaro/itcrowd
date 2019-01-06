@@ -4,11 +4,19 @@ module Api
       before_action :set_movie, only: [:show, :update, :destroy]
 
       def index
-        render json: Movie.all, status: 201
+        movie = Movie.all
+        render(
+          json: ActiveModel::ArraySerializer.new(
+            movie,
+            each_serializer: Api::V1::MovieSerializer,
+            root: 'movie'
+          )
+        )
       end
 
       def show
-        render json: @movie, status: 201
+        render json: @movie,
+          serializer: Api::V1::MovieSerializer, status: 201
       end
 
       def create

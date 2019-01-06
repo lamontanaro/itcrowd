@@ -4,11 +4,19 @@ module Api
       before_action :set_person, only: [:show, :update, :destroy]
 
       def index
-        render json: Person.all, status: 201
+        people = Person.all
+        render(
+          json: ActiveModel::ArraySerializer.new(
+            people,
+            each_serializer: Api::V1::PeopleSerializer,
+            root: 'people'
+          )
+        )
       end
 
       def show
-        render json: @person, status: 201
+        render json: @person,
+          serializer: Api::V1::PeopleSerializer, status: 201
       end
 
       def create
