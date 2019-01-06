@@ -1,6 +1,7 @@
 module Api
   module V1
     class PeopleMoviesController < BaseController
+      include PeopleMoviesDoc
       before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy]
       before_action :set_people_movie, only: [:show, :update, :destroy]
 
