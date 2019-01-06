@@ -12,25 +12,25 @@ module PeopleMoviesDoc
   def index
   end
 
-  api :GET, '/people_movies/:id', 'Show movie'
+  api :GET, '/people_movies/:id', 'Show people_movie'
   param :id, :number, :required => true
-  returns :people_movies, :desc => "The movie"
+  returns :people_movies, :desc => "The people_movie"
   def show
   end
 
-  api :PATH, '/people_movies', 'Update a movie'
+  api :PATH, '/people_movies', 'Update a people_movie'
   param_group :people_movies
-  returns :people_movies, :desc => "Update movie"
+  returns :people_movies, :desc => "Update people_movie"
   def update
   end
 
-  api :POST, '/people_movies', 'Create a movie'
+  api :POST, '/people_movies', 'Create a people_movie'
   param_group :people_movies
   returns :people_movies, :desc => "New people_movies"
   def create
   end
 
-  api :DELETE, '/people_movies/:id', 'Delete movie'
+  api :DELETE, '/people_movies/:id', 'Delete people_movie'
   param :id, :number, :required => true
   def destroy
   end
