@@ -18,7 +18,7 @@ module Api
 
       def show
         render json: @movie,
-          serializer: Api::V1::MovieSerializer, status: 201
+          serializer: Api::V1::MovieSerializer, status: 200
       end
 
       def create

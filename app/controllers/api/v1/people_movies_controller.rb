@@ -10,7 +10,7 @@ module Api
       end
 
       def show
-        render json: @people_movies, status: 201
+        render json: @people_movies, status: 200
       end
 
       def create

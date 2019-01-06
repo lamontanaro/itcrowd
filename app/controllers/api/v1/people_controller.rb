@@ -18,7 +18,7 @@ module Api
 
       def show
         render json: @person,
-          serializer: Api::V1::PeopleSerializer, status: 201
+          serializer: Api::V1::PeopleSerializer, status: 200
       end
 
       def create
