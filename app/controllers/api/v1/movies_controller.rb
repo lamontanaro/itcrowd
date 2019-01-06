@@ -1,6 +1,7 @@
 module Api
   module V1
     class MoviesController < BaseController
+      before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy]
       before_action :set_movie, only: [:show, :update, :destroy]
 
       def index
